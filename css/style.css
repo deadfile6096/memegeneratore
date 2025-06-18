@@ -1,0 +1,261 @@
+/* --- Core Styles & NES Theming --- */
+:root {
+    --bg-color: #2c3e50;
+    --console-color: #e5e0d1;
+    --console-shadow: #c3bfb1;
+    --console-highlight: #fdfaf0;
+    --dark-grey: #3f3f3f;
+    --nintendo-red: #d92c2c;
+    --screen-bg: #b5cc85;
+    --light-text: #e5e0d1;
+    --social-green: #5d7443;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 15px 0;
+    color: var(--dark-grey);
+}
+
+/* --- REMOVED: .how-it-works-button class is no longer needed --- */
+
+/* --- Popup Modal Styles --- */
+.popup-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; backdrop-filter: blur(2px); transition: opacity 0.3s ease;
+}
+.popup-modal {
+    background: var(--console-color); padding: 30px;
+    border: 3px solid var(--dark-grey); border-radius: 8px;
+    width: 90%; max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: fadeIn 0.3s ease-out;
+    text-align: left;
+}
+@keyframes fadeIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popup-modal h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--dark-grey);
+    text-align: center;
+}
+.popup-modal h3 {
+    font-size: 14px;
+    color: var(--dark-grey);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+.popup-modal ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+.popup-modal li {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: var(--dark-grey);
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.8;
+}
+.popup-modal li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--dark-grey);
+    font-weight: bold;
+}
+.popup-modal .note-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    font-style: normal;
+    color: var(--nintendo-red);
+    margin-top: 5px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+.popup-modal #acknowledgeBtn {
+    display: block;
+    margin: 30px auto 0;
+}
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Token Address Container Styling --- */
+.token-container { background-color: var(--screen-bg); padding: 8px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 3px solid var(--dark-grey); }
+.token-label { font-size: 10px; margin-bottom: 8px; color: var(--dark-grey); }
+.token-address-wrapper { background-color: var(--social-green); color: var(--light-text); padding: 8px 12px; border-radius: 5px; font-size: 12px; display: flex; align-items: center; gap: 15px; transition: all 0.2s ease; }
+.token-address-wrapper:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--screen-bg); cursor: pointer; }
+.copy-button { background: none; border: 2px solid var(--light-text); color: var(--light-text); font-family: 'Press Start 2P', cursive; cursor: pointer; border-radius: 3px; padding: 2px 5px; font-size: 12px; transition: background-color 0.2s ease; }
+.copy-button:hover { background-color: rgba(255,255,255,0.2); }
+
+/* --- Game Console Structure --- */
+.game-console { background-color: var(--console-color); background-image: linear-gradient( to bottom, var(--console-highlight) 0%, var(--console-color) 30%, var(--console-color) 70%, var(--console-shadow) 100% ); border-radius: 20px 20px 80px 20px; padding: 25px; box-shadow: inset -2px -4px 0px rgba(0,0,0,0.15), inset 2px 2px 2px var(--console-highlight), 0 15px 30px rgba(0,0,0,0.4); width: 450px; position: relative; border: 1px solid var(--console-shadow); }
+.game-console::after { content: ''; position: absolute; inset: 0; border-radius: 20px 20px 80px 20px; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'); opacity: 0.04; pointer-events: none; }
+
+/* --- Screen Area --- */
+.screen-area { background-color: var(--dark-grey); border-radius: 15px; padding: 15px; box-shadow: inset 0px 0px 10px rgba(0,0,0,0.7), inset 2px 2px 2px rgba(0,0,0,0.9); }
+.screen { background-color: var(--screen-bg); height: 360px; padding: 10px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; border-radius: 5px; text-align: center; position: relative; overflow: hidden; }
+.screen::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,0.15) 50%, transparent 50%); background-size: 100% 4px; pointer-events: none; }
+.screen-header { font-size: 12px; margin-bottom: 8px; z-index: 1; flex-shrink: 0; }
+.screen-header span { font-size: 9px; opacity: 0.8; display: block; }
+#memeCanvas { background-color: #a7bb7d; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2); display: none; z-index: 1; flex-shrink: 0; width: 350px; height: 218px; }
+#placeholder { padding: 15px; z-index: 1; margin-top: 60px; font-size: 12px; }
+
+/* --- Submission Area Styles --- */
+.submission-area { display: none; flex-direction: column; align-items: center; gap: 8px; margin-top: 8px; width: 100%; z-index: 1; }
+.image-id { font-size: 12px; color: var(--dark-grey); background-color: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 5px; position: relative; }
+.key-input-group { display: flex; width: 90%; }
+#publicKeyInput { flex-grow: 1; background-color: #f0f0f0; border: 2px solid var(--dark-grey); border-right: none; padding: 6px; font-family: 'Press Start 2P', cursive; font-size: 9px; border-radius: 5px 0 0 5px; outline: none; }
+#publicKeyInput:disabled { background-color: #a7bb7d; color: var(--dark-grey); filter: brightness(0.8); }
+.submit-btn { background-color: var(--nintendo-red); color: var(--light-text); border: 2px solid var(--dark-grey); border-left: none; padding: 6px 8px; font-family: 'Press Start 2P', cursive; font-size: 9px; cursor: pointer; border-radius: 0 5px 5px 0; }
+.submit-btn:disabled { background-color: var(--dark-grey); color: #999; cursor: not-allowed; }
+
+/* --- Controls & Buttons --- */
+.controls { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 15px; }
+.action-buttons { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.button { color: var(--light-text); border: none; padding: 12px 10px; width: 180px; font-family: 'Press Start 2P', cursive; font-size: 12px; border-radius: 25px; cursor: pointer; text-align: center; text-decoration: none; box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 4px #222; transition: all 0.1s ease-in-out; display: flex; justify-content: center; align-items: center; }
+.button.primary { background-color: var(--nintendo-red); box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 4px #8b2424; }
+.button.social { background-color: var(--social-green); box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 4px #3a4929; }
+.button:hover { filter: brightness(1.1); }
+.button:active { box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2), 0 1px #222; transform: translateY(3px); }
+.button.primary:active { box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2), 0 1px #8b2424; }
+.button.social:active { box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2), 0 1px #3a4929; }
+.button:disabled { background-color: #999; box-shadow: 0 4px #666; cursor: not-allowed; filter: grayscale(80%) brightness(0.9); }
+.button:disabled:hover, .button:disabled:active { transform: none; box-shadow: 0 4px #666; filter: grayscale(80%) brightness(0.9); }
+
+/* --- Custom Upload Area Styles --- */
+.hidden-input { display: none; }
+.custom-upload-area { display: flex; gap: 10px; justify-content: center; width: 100%; margin: 5px 0; }
+.upload-slot { width: 80px; height: 80px; }
+.upload-label { width: 100%; height: 100%; border: 3px dashed var(--dark-grey); border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; background-color: rgba(0,0,0,0.05); transition: background-color 0.2s; position: relative; }
+.upload-label:hover { background-color: rgba(0,0,0,0.1); }
+.upload-label img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
+.upload-label span { position: absolute; color: var(--dark-grey); background: rgba(229, 224, 209, 0.7); padding: 2px 5px; border-radius: 3px; font-size: 9px; pointer-events: none; }
+.upload-label.has-image span { display: none; }
+
+/* --- D-Pad Styles --- */
+/* NEW: Flex container for D-pad and its button */
+.d-pad-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* Creates space between d-pad and button below it */
+    align-self: start; /* Aligns this whole column to the top of the grid row */
+}
+
+.d-pad {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    /* REMOVED: justify-self: center; */
+}
+.d-pad::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30px; height: 30px; background: radial-gradient(circle, #2a2a2a 0%, #383838 100%); border-radius: 50%; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.6); z-index: 2; }
+.d-pad .dir { background-color: var(--dark-grey); position: absolute; box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.05), inset -2px -2px 3px rgba(0, 0, 0, 0.5), 0 4px #222; z-index: 1; }
+.d-pad .vertical { width: 40px; height: 120px; left: 40px; border-radius: 8px; }
+.d-pad .horizontal { width: 120px; height: 40px; top: 40px; border-radius: 8px; }
+.d-pad .vertical::before, .d-pad .vertical::after, .d-pad .horizontal::before, .d-pad .horizontal::after { content: ''; position: absolute; width: 0; height: 0; opacity: 0.6; }
+.d-pad .vertical::before { top: 10px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 12px solid #2a2a2a; }
+.d-pad .vertical::after { bottom: 10px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 12px solid #2a2a2a; }
+.d-pad .horizontal::before { left: 10px; top: 50%; transform: translateY(-50%); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 12px solid #2a2a2a; }
+.d-pad .horizontal::after { right: 10px; top: 50%; transform: translateY(-50%); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #2a2a2a; }
+
+/* --- Footer Styles --- */
+.footer-text { text-align: center; margin-top: 15px; font-size: 9px; color: #999; }
+
+/* --- Shake Animation for Invalid Input --- */
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+#publicKeyInput.shake { animation: shake 0.5s ease; }
+
+/* --- Ellipsis Animation for Generating Text --- */
+@keyframes ellipsis {
+  0%   { content: '.'; }
+  33%  { content: '..'; }
+  66%  { content: '...'; }
+}
+.image-id.generating::after {
+  content: '...';
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 1.5s infinite;
+  width: 1.5em;
+  text-align: left;
+}
+
+/* --- Side Notification Popup --- */
+.side-notification {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(110%, -50%); /* Start off-screen to the right */
+    width: 260px;
+    background-color: var(--console-color);
+    padding: 25px;
+    padding-top: 35px;
+    border: 3px solid var(--dark-grey);
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -5px 5px 20px rgba(0,0,0,0.4);
+    z-index: 998; /* Below the main popup but above other content */
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: left;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* A nice bouncy slide-in effect */
+}
+
+.side-notification.show {
+    transform: translate(0, -50%); /* Slide it into view */
+}
+
+.side-notification .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-family: Arial, sans-serif; /* Better for the '×' symbol */
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark-grey);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.side-notification .close-btn:hover {
+    opacity: 1;
+}
+
+
+/* --- Glowing Button Animation --- */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 4px #3a4929, 0 0 5px var(--social-green);
+  }
+  50% {
+    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 4px #3a4929, 0 0 25px var(--social-green), 0 0 10px var(--screen-bg);
+  }
+}
+
+.glowing-button {
+  animation: glow 2s infinite ease-in-out;
+}

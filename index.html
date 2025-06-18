@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Original Meme Generator</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="token-container">
+        <div class="token-label">TOKEN ADDRESS:</div>
+        <div class="token-address-wrapper">
+            <span id="tokenAddress">ALki6m9ejGtQH5EHRsNEdxAeKgyPiYwEoRvnPR2Qpump</span>
+            <button id="copyBtn" class="copy-button" title="Copy to Clipboard">[ ]</button>
+        </div>
+    </div>
+
+    <div class="game-console">
+        <div class="screen-area">
+            <div class="screen">
+                <div class="screen-header">
+                    Original Meme Generator
+                    <span>NOTHING IS ORIGINAL</span>
+                </div>
+                
+                <canvas id="memeCanvas" width="400" height="250"></canvas>
+                
+                <div id="placeholder" class="placeholder-text">
+                    <p>PRESS "CREATE" TO START</p>
+                </div>
+
+                <div id="submissionArea" class="submission-area">
+                    <div id="imageIdDisplay" class="image-id">IMAGE ID: ??????</div>
+                    <div class="key-input-group">
+                        <input type="text" id="publicKeyInput" placeholder="ENTER PUBLIC KEY...">
+                        <button id="submitKeyBtn" class="submit-btn">SUBMIT</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="controls">
+            <!-- NEW: Container for D-Pad and "How it Works" button -->
+            <div class="d-pad-area">
+                <div class="d-pad">
+                    <div class="dir vertical"></div>
+                    <div class="dir horizontal"></div>
+                </div>
+                <!-- MOVED & UPDATED BUTTON -->
+                <button id="howItWorksBtn" class="button social">How it Works</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="createRandomBtn" class="button primary">Create Random</button>
+                <button id="createCustomBtn" class="button social" disabled="">Create Custom</button>
+                <button id="downloadBtn" class="button social">Download</button>
+
+                <div class="custom-upload-area">
+                    <div class="upload-slot">
+                        <label for="uploadInput1" class="upload-label">
+                            <img id="thumb1" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Upload Left Half">
+                            <span>LEFT HALF</span>
+                        </label>
+                        <input type="file" id="uploadInput1" accept="image/*" class="hidden-input">
+                    </div>
+                    <div class="upload-slot">
+                        <label for="uploadInput2" class="upload-label">
+                            <img id="thumb2" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Upload Right Half">
+                            <span>RIGHT HALF</span>
+                        </label>
+                        <input type="file" id="uploadInput2" accept="image/*" class="hidden-input">
+                    </div>
+                </div>
+                
+                <a href="https://x.com/i/communities/1935391473140134345" target="_blank" id="organizeBtn" class="button social">Post on X</a>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            © 2024 Original Meme Generator
+        </div>
+    </div>
+
+    <audio id="actionSound" src="media/create_meme.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="media/click.mp3" preload="auto"></audio>
+    
+    <div id="welcomePopupOverlay" class="popup-overlay">
+        <div class="popup-modal">
+            <h2>How to Participate</h2>
+
+            <h3>1. Create and Post Your Meme</h3>
+            <ul>
+                <li>Use any of our ready-made images or upload your own.</li>
+                <li>Submit your public key into the website.</li>
+                <li>Share it in the X Community.</li>
+            </ul>
+
+            <h3>2. Get the Most Likes</h3>
+            <ul>
+                <li>The meme with the highest likes wins an airdrop from the developer wallet!</li>
+            </ul>
+
+            <h3>Note</h3>
+            <p class="note-text">
+                Public key will be linked to the unique image identifier. Only one entry per public key. Choose wisely!
+            </p>
+            
+            <button id="acknowledgeBtn" class="button primary">Acknowledged</button>
+        </div>
+    </div>
+
+    <div id="sideNotification" class="side-notification">
+        <button id="closeNotificationBtn" class="close-btn">×</button>
+        <p>Submit your Public Key and post your meme on the X community to be entered for the airdrop!</p>
+    </div>
+
+    <script src="js/script.js"></script>
+
+
+</body></html>
